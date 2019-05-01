@@ -11,4 +11,8 @@
     <string name="tab_text_2">Tab 2</string>
     <string name="tab_text_3">Tab 3</string>
     <string name="tab_text_4">Tab 4</string>
+    <string name="text_search">search</string>
+    <string name="text_tanking">Ranking</string>
+    <string name="text_like">Likes</string>
+    <string name="text_me">Me</string>
 </resources>
