@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 public class fragmentMe extends Fragment {
     public final static String TAG = "Me Fragment";
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

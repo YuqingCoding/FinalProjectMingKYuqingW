@@ -24,17 +24,28 @@ public class Main2Activity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private SectionsPageAdapter mSectionsPageAdapter;
+
+    private ViewPager mViewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
+        mViewPager = (ViewPager)findViewById(R.id.container);
+        setupViewPager(mViewPager);
 
+        TabLayout tabLayout = (TabLayout)findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
     }
 
     public void setupViewPager (ViewPager viewPager){
+        SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
+        adapter.addFragment(new fragmentMe(), "Me Fragment");
+        adapter.addFragment(new fragmentSearch(),"Search Fragment");
+        adapter.addFragment(new fragmentRatingList(),"Rating List Fragment");
+        adapter.addFragment(new fragmentLikes(),"Likes Fragment");
 
+        viewPager.setAdapter(adapter);
     }
-
-
 }
