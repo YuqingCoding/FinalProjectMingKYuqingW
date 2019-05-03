@@ -13,12 +13,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Objects;
+
 public class Login extends AppCompatActivity {
 
     private EditText mEmail;
     private EditText mPassword;
-    private Button login;
-    private Button loginAuth;
+
     private String userEmail;
     private String userPassword;
 
@@ -28,15 +29,12 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         mEmail = (EditText) findViewById(R.id.enter_username);
         mPassword = (EditText) findViewById(R.id.enter_password);
-        login = (Button) findViewById(R.id.login_button);
-        loginAuth = (Button) findViewById(R.id.auth_button);
 
         mAuth = FirebaseAuth.getInstance();
-
 
     }
 
@@ -48,9 +46,9 @@ public class Login extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()) {
-                    Toast.makeText(Login.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, Objects.requireNonNull(task.getException()).toString(), Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(Login.this, task.getResult().getUser().getEmail() + "log in successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, Objects.requireNonNull(task.getResult()).getUser().getEmail() + "log in successful", Toast.LENGTH_SHORT).show();
                     finish();
                 }
 
@@ -66,9 +64,9 @@ public class Login extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()) {
-                    Toast.makeText(Login.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, Objects.requireNonNull(task.getException()).toString(), Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(Login.this, task.getResult().getUser().getEmail() + "sign up successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, Objects.requireNonNull(task.getResult()).getUser().getEmail() + "sign up successful", Toast.LENGTH_SHORT).show();
                     finish();
                 }
             }
