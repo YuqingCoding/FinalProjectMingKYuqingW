@@ -39,7 +39,7 @@
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:background="@android:color/white"
         android:padding="8dp">
@@ -97,7 +97,21 @@
         android:layout_marginTop="16dp"
         android:textSize="16sp"
         android:text="@string/title_open"
-        android:onClick="Login"/>
+        android:onClick="login"/>
+
+    <Button
+    android:id = "@+id/sign_up_button"
+    android:layout_gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#F097A5"
+    android:padding="8dp"
+    android:layout_marginTop="16dp"
+    android:textSize="16sp"
+    android:text="@string/sign_up"
+    android:onClick="signUp"/>
+
+
 
     <Button
         android:id = "@+id/auth_button"
@@ -109,7 +123,6 @@
         android:layout_marginTop="8dp"
         android:textSize="16sp"
         android:text="@string/other_login"
-        android:onClick="AuthWithGoogle"
 
         />
 

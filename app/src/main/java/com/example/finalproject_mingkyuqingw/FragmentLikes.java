@@ -8,14 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class fragmentRatingList extends Fragment {
-    public final static String TAG = "Rating List Fragment";
+public class FragmentLikes extends Fragment {
+    public final static String TAG = "Likes Fragment";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_restaurant_ranking,container,false);
-        return view;
+        return inflater.inflate(R.layout.fragment_my_likes,container,false);
+
     }
 }
