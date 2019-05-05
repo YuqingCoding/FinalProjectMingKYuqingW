@@ -9,8 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -18,7 +22,9 @@ public class FragmentMe extends Fragment {
     public final static String TAG = "Me Fragment";
 
     ListView listView;
+    Button logOutButton;
     Context thisContext;
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
 
     @Nullable
     @Override
@@ -34,17 +40,32 @@ public class FragmentMe extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
         listView = (ListView) getView().findViewById(R.id.user_setting_list);
+        logOutButton = (Button) getView().findViewById(R.id.log_out_button);
+
 
         ArrayList<String>arrayList = new ArrayList<>();
 
         arrayList.add("User: Detective Pikachu");
         arrayList.add("My Activity");
         arrayList.add("Message");
+        arrayList.add("My Payment");
+        arrayList.add("City Food News");
+        arrayList.add("Membership");
         arrayList.add("General Setting");
+
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(thisContext,android.R.layout.simple_list_item_1,arrayList);
         listView.setAdapter(arrayAdapter);
 
-    }
-
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    auth.signOut();
+                    Toast.makeText(thisContext,"Sign Out Successfully",Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 }
+
+
+
