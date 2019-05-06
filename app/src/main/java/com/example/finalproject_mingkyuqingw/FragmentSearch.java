@@ -1,5 +1,6 @@
 package com.example.finalproject_mingkyuqingw;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,11 +16,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toolbar;
+import android.support.v7.widget.Toolbar;
 
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
@@ -57,14 +59,14 @@ public class FragmentSearch extends Fragment {
         setHasOptionsMenu(true);
 
         listView = (ListView) view.findViewById(R.id.list_view);
-        adapter = new ArrayAdapter<String>(FragmentSearch.this,R.layout.search_item,listSource);
+        adapter = new ArrayAdapter<String>(view.getContext(),R.layout.search_item,listSource);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String Templistview = listSource[position].toString();
-                Intent intent = new Intent(FragmentSearch.this,ItemFragment.class);
+                Intent intent = new Intent(view.getContext(),ItemFragment.class);
                 intent.putExtra("Listviewclickvalue", Templistview);
                 startActivity(intent);
             }
@@ -79,8 +81,8 @@ public class FragmentSearch extends Fragment {
 
             @Override
             public void onSearchViewClosed() {
-                listView = (ListView) view.findViewById(R.id.list_view);
-                adapter = new ArrayAdapter<String>(FragmentSearch.this,R.layout.search_item,listSource);
+                listView = (ListView) getView().findViewById(R.id.list_view);
+                adapter = new ArrayAdapter<String>(getView().getContext(),R.layout.search_item,listSource);
                 listView.setAdapter(adapter);
 
             }
@@ -101,11 +103,11 @@ public class FragmentSearch extends Fragment {
                             listFound.add(item);
                     }
 
-                    adapter = new ArrayAdapter<String>(FragmentSearch.this, R.layout.search_item, listFound);
+                    adapter = new ArrayAdapter<String>(getView().getContext(), R.layout.search_item,listFound);
                     listView.setAdapter(adapter);
                 } else {
                     //if search text is null, return default
-                    adapter = new ArrayAdapter<String>(this, R.layout.search_item, listSource);
+                    adapter = new ArrayAdapter<String>(getView().getContext(), R.layout.search_item,listSource);
                     listView.setAdapter(adapter);
                 }
                 return true;
