@@ -1,94 +1,70 @@
 package com.example.finalproject_mingkyuqingw;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.support.v7.widget.Toolbar;
-
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
+import android.support.v7.widget.SearchView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FragmentSearch extends Fragment {
-
     public final static String TAG = "Search Fragment";
-    private ListView listView;
-    private ArrayAdapter<String> adapter;
-    Toolbar toolbar;
+    ListView listView;
+    ListViewAdapter adapter;
+    String[] title;
+    String[] description;
+    int[] icon;
+    ArrayList<Model> arrayList = new ArrayList<Model>();
 
-    String listSource[] = {
-            "western food", "Chinese", "Japanese", "southeastern asian", "brunch", "dessert", "fast food"
-    };
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        return inflater.inflate(R.layout.fragment_search,container,false);
 
     }
 
-    @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        actionBar.setTitle("Items List");
 
-        toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Material Search");
-        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
+        title = new String[]{"one","two","three","four"};
+        description = new String[]{"onede","twode","threede","fourde"};
+        icon = new int[]{R.drawable.restaurant_one,R.drawable.restaurant_two,R.drawable.restaurant_three,R.drawable.restaurant_four};
+
+        listView = view.findViewById(R.id.list_view);
         setHasOptionsMenu(true);
 
-        listView = (ListView) view.findViewById(R.id.list_view);
-        adapter = new ArrayAdapter<String>(view.getContext(),R.layout.search_item,listSource);
+        for(int i = 0;i<title.length;i++){
+            Model model = new Model(title[i],description[i],icon[i]);
+            arrayList.add(model);
+        }
+
+        adapter = new ListViewAdapter(getView().getContext(),arrayList);
         listView.setAdapter(adapter);
+    }
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String Templistview = listSource[position].toString();
-                Intent intent = new Intent(view.getContext(),ItemFragment.class);
-                intent.putExtra("Listviewclickvalue", Templistview);
-                startActivity(intent);
-            }
-        });
-
-        MaterialSearchView searchView = (MaterialSearchView) view.findViewById(R.id.search_view);
-        searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
-            @Override
-            public void onSearchViewShown() {
-
-            }
-
-            @Override
-            public void onSearchViewClosed() {
-                listView = (ListView) getView().findViewById(R.id.list_view);
-                adapter = new ArrayAdapter<String>(getView().getContext(),R.layout.search_item,listSource);
-                listView.setAdapter(adapter);
-
-            }
-        });
-
-        searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu,menu);
+        MenuItem myActionMenuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView)myActionMenuItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -96,31 +72,26 @@ public class FragmentSearch extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if (newText != null && !newText.isEmpty()) {
-                    List<String> listFound = new ArrayList<String>();
-                    for (String item : listSource) {
-                        if (item.contains(newText))
-                            listFound.add(item);
-                    }
-
-                    adapter = new ArrayAdapter<String>(getView().getContext(), R.layout.search_item,listFound);
-                    listView.setAdapter(adapter);
-                } else {
-                    //if search text is null, return default
-                    adapter = new ArrayAdapter<String>(getView().getContext(), R.layout.search_item,listSource);
-                    listView.setAdapter(adapter);
+                if(TextUtils.isEmpty(newText)){
+                    adapter.filter("");
+                    listView.clearTextFilter();
+                }
+                else{
+                    adapter.filter(newText);
                 }
                 return true;
             }
-
         });
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_item,menu);
         super.onCreateOptionsMenu(menu,inflater);
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+        if(id == R.id.action_settings){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

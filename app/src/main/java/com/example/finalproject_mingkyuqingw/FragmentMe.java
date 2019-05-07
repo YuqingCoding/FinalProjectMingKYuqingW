@@ -43,7 +43,7 @@ public class FragmentMe extends Fragment {
         logOutButton = (Button) getView().findViewById(R.id.log_out_button);
 
 
-        ArrayList<String>arrayList = new ArrayList<>();
+        ArrayList<String>arrayList = new ArrayList<String>();
 
         arrayList.add("User: Detective Pikachu");
         arrayList.add("My Activity");
@@ -54,18 +54,17 @@ public class FragmentMe extends Fragment {
         arrayList.add("General Setting");
 
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(thisContext,android.R.layout.simple_list_item_1,arrayList);
+        ArrayAdapter arrayAdapter = new ArrayAdapter<String>(thisContext,android.R.layout.simple_list_item_1,arrayList);
         listView.setAdapter(arrayAdapter);
 
         logOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    auth.signOut();
-                    Toast.makeText(thisContext,"Sign Out Successfully",Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
+                auth.signOut();
+                Toast.makeText(thisContext,"Sign Out Successfully",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }
-
 
 

@@ -42,8 +42,8 @@ public class FragmentLikesAdapter extends RecyclerView.Adapter<FragmentLikesAdap
         viewHolder.imageView.setImageResource(restaurants.get(position).getPhotoId());
 
         if (position % 2 == 0) {
-           viewHolder.imageView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 500));
-           viewHolder.textView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100));
+            viewHolder.imageView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 500));
+            viewHolder.textView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100));
         } else {
             viewHolder.imageView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 600));
 

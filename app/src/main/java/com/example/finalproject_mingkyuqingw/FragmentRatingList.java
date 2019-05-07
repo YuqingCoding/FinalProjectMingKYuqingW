@@ -1,5 +1,6 @@
 package com.example.finalproject_mingkyuqingw;
 
+
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -76,10 +77,10 @@ public class FragmentRatingList extends Fragment {
         });
 
     }
-     public void setFragment (Fragment fragment){
-         FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-         fragmentTransaction.replace(R.id.rating_frame, fragment);
-         fragmentTransaction.commit();
-     }
-
+    public void setFragment (Fragment fragment){
+        FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.rating_frame, fragment);
+        fragmentTransaction.commit();
     }
+
+}

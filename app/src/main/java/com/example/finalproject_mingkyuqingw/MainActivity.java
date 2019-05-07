@@ -120,11 +120,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
-    public void logOut(View view){
-        auth.signOut();
-        Toast.makeText(MainActivity.this,"Log out successful",Toast.LENGTH_SHORT).show();
 
-    }
 
     @Override
     public void onStart() {

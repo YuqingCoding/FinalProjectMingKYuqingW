@@ -54,6 +54,3 @@ public class FragmentLikes extends Fragment {
 }
 
 
-
-
-
