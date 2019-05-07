@@ -96,8 +96,9 @@
                 android:id="@+id/menu_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/menu"
+                android:layout_marginLeft="27dp"
 
+                android:layout_toRightOf="@+id/menu"
                 android:padding="8dp"
                 android:text="Menu"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"

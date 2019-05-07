@@ -95,12 +95,12 @@
                 android:id="@+id/menu_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="29dp"
                 android:layout_toRightOf="@+id/menu"
                 android:padding="8dp"
                 android:text="Menu"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="#9A5666"
-                 />
+                android:textColor="#9A5666" />
 
             <TextView
                 android:padding="4dp"
