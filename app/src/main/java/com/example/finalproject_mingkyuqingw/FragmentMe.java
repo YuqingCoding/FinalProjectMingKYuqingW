@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -61,6 +62,7 @@ public class FragmentMe extends Fragment {
             @Override
             public void onClick(View v) {
                 auth.signOut();
+                AuthUI.getInstance().signOut(thisContext);
                 Toast.makeText(thisContext,"Sign Out Successfully",Toast.LENGTH_SHORT).show();
             }
         });

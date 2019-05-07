@@ -41,7 +41,7 @@ public class FragmentSearch extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
-        actionBar.setTitle("Items List");
+        actionBar.setTitle("Food Map");
 
         title = new String[]{"one","two","three","four"};
         description = new String[]{"onede","twode","threede","fourde"};
