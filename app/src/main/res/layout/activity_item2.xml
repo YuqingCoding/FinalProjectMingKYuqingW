@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:background="@color/cardview_light_background"
-    tools:context=".ItemActivity">
+    tools:context=".Item2Activity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_height="181dp"
             android:layout_weight="1"
             android:scaleType="centerCrop"
-            android:src="@drawable/restaurant_one"
+            android:src="@drawable/restaurant_two"
             android:paddingBottom="@android:dimen/app_icon_size"/>
 
         <TextView
@@ -28,11 +28,10 @@
             android:layout_width="match_parent"
             android:layout_height="77dp"
             android:layout_weight="1"
-            android:text="Blue Sky"
+            android:text="Dream Coffee"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="36sp"
-            android:padding="8dp"
-            />
+            android:padding="8dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -40,7 +39,7 @@
             android:layout_weight="0.5"
             android:padding="20dp"
             android:textColor="#9A5666"
-            android:text="American, Bars, Breakfast, Brunch"
+            android:text="Coffee, Cake, Brunch"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
         <RelativeLayout
             android:layout_width="match_parent"
@@ -97,11 +96,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/menu"
-
                 android:padding="8dp"
                 android:text="Menu"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="#9A5666" />
+                android:textColor="#9A5666"
+                />
 
             <TextView
                 android:padding="4dp"
@@ -193,6 +192,7 @@ Fries
                 android:layout_height="38dp"
                 android:foregroundGravity="center_vertical|center_horizontal"
                 android:gravity="center"
+
                 android:text="Submit"
                 android:background="#FD687A"
                 android:textColor="@android:color/background_light"

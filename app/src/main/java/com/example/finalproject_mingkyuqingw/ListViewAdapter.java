@@ -74,35 +74,35 @@ public class ListViewAdapter extends BaseAdapter {
             @Override
             public void onClick(View view){
 
-                if(modellist.get(position).getTitle().equals("one")){
+                if(modellist.get(position).getTitle().equals("Blue Sky")){
 
                     Intent intent = new Intent (view.getContext(),ItemActivity.class);
-                    intent.putExtra("actionBarTitle","one");
-                    intent.putExtra("contentTv","This is one details");
+                    intent.putExtra("actionBarTitle","Blue Sky");
+                    intent.putExtra("contentTv","Blue Sky");
                     view.getContext().startActivity(intent);
 
                 }
-                if(modellist.get(position).getTitle().equals("two")){
+                if(modellist.get(position).getTitle().equals("Dream Coffee")){
 
-                    Intent intent = new Intent (view.getContext(),ItemActivity.class);
-                    intent.putExtra("actionBarTitle","two");
-                    intent.putExtra("contentTv","This is two details");
+                    Intent intent = new Intent (view.getContext(),Item2Activity.class);
+                    intent.putExtra("actionBarTitle","Dream Coffee");
+                    intent.putExtra("contentTv","Dream Coffee");
                     view.getContext().startActivity(intent);
 
                 }
-                if(modellist.get(position).getTitle().equals("three")){
+                if(modellist.get(position).getTitle().equals("Go Brunch")){
 
                     Intent intent = new Intent (view.getContext(),ItemActivity.class);
-                    intent.putExtra("actionBarTitle","three");
-                    intent.putExtra("contentTv","This is three details");
+                    intent.putExtra("actionBarTitle","Go Brunch");
+                    intent.putExtra("contentTv","Go Brunch");
                     view.getContext().startActivity(intent);
 
                 }
-                if(modellist.get(position).getTitle().equals("four")){
+                if(modellist.get(position).getTitle().equals("Green Valley")){
 
                     Intent intent = new Intent (view.getContext(),ItemActivity.class);
-                    intent.putExtra("actionBarTitle","four");
-                    intent.putExtra("contentTv","This is four details");
+                    intent.putExtra("actionBarTitle","Green Valley");
+                    intent.putExtra("contentTv","Green Valley");
                     view.getContext().startActivity(intent);
 
                 }

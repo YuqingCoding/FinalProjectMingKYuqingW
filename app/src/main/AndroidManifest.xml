@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Item4Activity"></activity>
+        <activity android:name=".Item3Activity" />
+        <activity android:name=".Item2Activity" />
         <activity android:name=".FragmentLikesAdapter" />
         <activity android:name=".Login" />
         <activity android:name=".MainActivity">
@@ -18,8 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ItemActivity"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".ItemActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
